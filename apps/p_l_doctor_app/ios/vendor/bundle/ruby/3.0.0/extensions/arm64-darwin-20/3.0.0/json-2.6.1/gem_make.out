@@ -1,0 +1,13 @@
+current directory: /Users/mateosegura/Documents/Work/Pill_Locker/Apps/p_l_doctor_app/ios/vendor/bundle/ruby/3.0.0/gems/json-2.6.1/ext/json
+/opt/homebrew/opt/ruby/bin/ruby -I /opt/homebrew/Cellar/ruby/3.0.2_1/lib/ruby/3.0.0 -r ./siteconf20211102-67668-51fep.rb extconf.rb
+creating Makefile
+
+current directory: /Users/mateosegura/Documents/Work/Pill_Locker/Apps/p_l_doctor_app/ios/vendor/bundle/ruby/3.0.0/gems/json-2.6.1/ext/json
+make DESTDIR\= clean
+
+current directory: /Users/mateosegura/Documents/Work/Pill_Locker/Apps/p_l_doctor_app/ios/vendor/bundle/ruby/3.0.0/gems/json-2.6.1/ext/json
+make DESTDIR\=
+make: Nothing to be done for `all'.
+
+current directory: /Users/mateosegura/Documents/Work/Pill_Locker/Apps/p_l_doctor_app/ios/vendor/bundle/ruby/3.0.0/gems/json-2.6.1/ext/json
+make DESTDIR\= install

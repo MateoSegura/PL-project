@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "715435015080",
+    "project_id": "pill-locker-project",
+    "storage_bucket": "pill-locker-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715435015080:android:004efa30f709ac30ed7b9d",
+        "android_client_info": {
+          "package_name": "com.flutterflow.pilllockerpatientapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715435015080-67llh7dakm1i3iq0vnv1hebt5thb77e7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhn3uMQ8UYGHslwp7_OKQlV5JmcHVErHU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715435015080-67llh7dakm1i3iq0vnv1hebt5thb77e7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "715435015080-deptpv7c97ktemo5kfob7u6mte22ie12.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flutterflow.plpatientapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

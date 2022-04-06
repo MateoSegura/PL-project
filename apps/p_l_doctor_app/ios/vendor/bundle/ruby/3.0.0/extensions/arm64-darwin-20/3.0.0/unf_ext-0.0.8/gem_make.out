@@ -1,0 +1,16 @@
+current directory: /Users/mateosegura/Documents/Work/Pill_Locker/Apps/p_l_doctor_app/ios/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+/opt/homebrew/opt/ruby/bin/ruby -I /opt/homebrew/Cellar/ruby/3.0.2_1/lib/ruby/3.0.0 -r ./siteconf20211102-67668-ks9gv0.rb extconf.rb
+checking for -lstdc++... yes
+creating Makefile
+
+current directory: /Users/mateosegura/Documents/Work/Pill_Locker/Apps/p_l_doctor_app/ios/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+make DESTDIR\= clean
+
+current directory: /Users/mateosegura/Documents/Work/Pill_Locker/Apps/p_l_doctor_app/ios/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+make DESTDIR\=
+compiling unf.cc
+linking shared-object unf_ext.bundle
+
+current directory: /Users/mateosegura/Documents/Work/Pill_Locker/Apps/p_l_doctor_app/ios/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 unf_ext.bundle ./.gem.20211102-67668-hslr4i
