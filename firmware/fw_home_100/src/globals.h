@@ -11,7 +11,7 @@
 #define DEFAULT_MOTOR_RPM 2000
 
 #define DEFAULT_PILLS_PER_TRAY 7
-#define DEFAULT_PILLS_TO_DISPENSE 4
+#define DEFAULT_PILLS_TO_DISPENSE 6
 #define DEFAULT_MISSED_PILLS 0
 #define DEFAULT_ACTIVATION_H 7 // 24 hour calender. Default is 7
 #define NUMBER_OF_TRAYS 3      // Max. is 3
@@ -20,7 +20,7 @@
 #define IN_DIRECTION -1
 
 #define DEFAULT_TIME_TO_POWER_SAVE_START_D 8
-#define DEFAULT_TIME_TO_POWER_SAVE_START_A 60
+#define DEFAULT_TIME_TO_POWER_SAVE_START_A 120
 
 #define NUMBER_OF_STEPS_MOVED_IN_TEST_MODE 40
 
@@ -67,8 +67,8 @@
 #define WAKE_UP 2
 
 // BLE Service Characteristics
-#define BLENAME "PILL LOCKER UNIT 1"
-#define SERVICE_UUID "6E400001-B5A3-F393-E0A9-E50E24DCCA9E" // UART service UUID
+#define BLENAME "PLPU1"
+#define SERVICE_UUID "6r400001-B5A3-F393-E0A9-E50E24DCCA9E" // UART service UUID
 #define CHARACTERISTIC_UUID "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"
 
 // The following are used to eliminate the delay in the sound Buzzer function

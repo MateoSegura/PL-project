@@ -17,14 +17,14 @@ void setCurrentDevice(String deviceSelected) {
       currentDevice = PillLockerDevice(
         'Pocket Unit 1',
         "PLPU1",
-        "6e400001-b5a3-f393-e0a9-e50e24dcca9e",
+        "6b400001-b5a3-f393-e0a9-e50e24dcca9e",
         "6e400002-b5a3-f393-e0a9-e50e24dcca9e",
       );
       break;
     case 'Pocket Unit 2':
       currentDevice = PillLockerDevice(
         'Pocket Unit 2',
-        "PLPU1",
+        "PLPU2",
         "6S400002-B5A3-F393-E0A9-E50E24DCCA9E",
         "6C400002-B5A3-F393-E0A9-E50E24DCCA9E",
       );

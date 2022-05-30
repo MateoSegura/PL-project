@@ -197,7 +197,7 @@ void setup()
     if (serial_debugging_enabled)
     {
         Serial.begin(115200);
-        Serial.setDebugOutput(0);
+        // Serial.setDebugOutput(0);
     }
 
     // Wait for Serial
@@ -1721,7 +1721,11 @@ void dispenseInstruction()
             portEXIT_CRITICAL(&mux);
 
             // Calculate necessary variables
-            uint16_t motor_steps = _number_of_trays_to_open[0] * this_device_settings.motor_steps_per_slot[0];
+            uint16_t motor_steps;
+            if (this_device_settings.device_type) // 1. is Home Unit
+                motor_steps = this_device_settings.motor_steps_per_slot[0];
+            else
+                motor_steps = _number_of_trays_to_open[0] * this_device_settings.motor_steps_per_slot[0];
 
             // Log
             this_device_settings.logPillDispensed();
@@ -1753,7 +1757,7 @@ void dispenseInstruction()
             moveMotor(1, OUT_DIRECTION, motor_steps);
             delay(2000);
 
-            if (this_device_settings.device_type == '0') // Pocket Unit
+            if (this_device_settings.device_type == 0) // Pocket Unit
             {
                 Serial.println("Opening for pocket mode");
 
@@ -1842,6 +1846,7 @@ void dispenseInstruction()
                 portENTER_CRITICAL(&mux);
                 this_device_settings.device_dispensing_flags.tray_open = true;
                 this_device_settings.device_dispensing_flags.awaiting_button_input = true;
+                this_device_settings.device_dispensing_flags.dispensing_pill = true;
                 screen_flags.clear_display = true;
                 portEXIT_CRITICAL(&mux);
 
@@ -1921,7 +1926,7 @@ void dispenseInstruction()
 void initBLE()
 {
     // BLE
-    BLEDevice::init(BLENAME);
+    BLEDevice::init("PLPU1");
     pServer = BLEDevice::createServer();
     pServer->setCallbacks(new MyServerCallbacks());
     BLEService *pService = pServer->createService(SERVICE_UUID);
@@ -2380,7 +2385,17 @@ void bluetothInstructionHandlerCore1()
         settings_message = ""; // Flush String
 
         // Firmware Version
-        sendBLEMessage(("Firmware Version: " + FIRMWARE_VERSION));
+        sendBLEMessage(("Version: " + String(FIRMWARE_VERSION)));
+        settings_message = ""; // Flush String
+
+        // Device type
+        String device_type;
+        if (this_device_settings.device_type)
+            device_type = "Home Unit";
+        else
+            device_type = "Pocket Unit";
+
+        sendBLEMessage(("Configured as: " + device_type));
         settings_message = ""; // Flush String
 
         // Demo Dispense Interval
@@ -2394,6 +2409,21 @@ void bluetothInstructionHandlerCore1()
             settings_message += ": ";
             settings_message += this_device_settings.demo_dispense_interval_s[i];
             settings_message += "s";
+        }
+        sendBLEMessage(settings_message);
+
+        // Demo Pills to dispense
+        settings_message = "";
+        settings_message += "Demo pills to dispense: ";
+        sendBLEMessage(settings_message);
+        settings_message = ""; // Flush String
+        for (int i = 0; i < NUMBER_OF_TRAYS; i++)
+        {
+            settings_message += ("        Tray ");
+            settings_message += (i + 1);
+            settings_message += ": ";
+            settings_message += this_device_settings.dosages_remaining[i];
+            // TODO: Find dispensing number variable
         }
         sendBLEMessage(settings_message);
 
@@ -2999,9 +3029,9 @@ void demoModeScreenManager()
             // this_device_settings.device_dispensing_flags.awaiting_button_input = true;
             // screen_flags.clear_display = true;
 
-            this_device_settings.device_dispensing_flags.awaiting_button_input = false;
-            this_device_settings.device_dispensing_flags.dispensing_pill = false;
-            screen_flags.clear_display = true;
+            // this_device_settings.device_dispensing_flags.awaiting_button_input = false;
+            // this_device_settings.device_dispensing_flags.dispensing_pill = false;
+            // screen_flags.clear_display = true;
 
             this_device_settings.device_dispensing_flags.tray_open = false;
 
@@ -3027,7 +3057,7 @@ void demoModeScreenManager()
                 tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
                 tft.setTextSize(2);
                 // with size text 2, 20 characters fit per line
-                if (this_device_settings.device_type == '0')
+                if (this_device_settings.device_type == 1)
                     tft.print("  Press any button     close the tray   ");
                 else
                     tft.print("   Please pick up     your medication   ");
@@ -3346,15 +3376,15 @@ void updateTime()
                 Serial.println("[RTC]  Could not update time");
             }
         }
-        else
-        {
-            String currentTime = rtc.stringTime();
-            if (serial_debugging_enabled)
-            {
-                Serial.print("[RTC]  ");
-                Serial.println(currentTime);
-            }
-        }
+        // else
+        // {
+        //     String currentTime = rtc.stringTime();
+        //     if (serial_debugging_enabled)
+        //     {
+        //         Serial.print("[RTC]  ");
+        //         Serial.println(currentTime);
+        //     }
+        // }
         // Unset flag
         update_time = false;
     }

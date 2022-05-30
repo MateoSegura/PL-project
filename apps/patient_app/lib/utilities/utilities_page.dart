@@ -240,6 +240,18 @@ class _UtilitiesPageWidgetState extends State<UtilitiesPageWidget> {
                   ),
                 ),
 
+                //* Change device mode
+                DropDownCommand(
+                  targetCharacteristic: widget.targetCharacteristic,
+                  title: "Change Device mode",
+                  variable: slotsPerTray,
+                  command: "V",
+                  options: ['P', 'H'],
+                  onPressed: () {
+                    print('pressed');
+                  },
+                ),
+
                 //* Change pill slots per tray
                 DropDownCommand(
                   targetCharacteristic: widget.targetCharacteristic,
@@ -312,6 +324,7 @@ class _UtilitiesPageWidgetState extends State<UtilitiesPageWidget> {
                     '650',
                     '700',
                     '750',
+                    '2615'
                   ],
                   onPressed: () {
                     print('pressed');
@@ -338,6 +351,7 @@ class _UtilitiesPageWidgetState extends State<UtilitiesPageWidget> {
                     '650',
                     '700',
                     '750',
+                    '1500'
                   ],
                   onPressed: () {
                     print('pressed');
@@ -631,6 +645,7 @@ class _DropDownCommandState extends State<DropDownCommand> {
                         command = widget.command;
                         command += widget.variable;
 
+                        print("Sending instruction");
                         writeData(command);
 
                         await showDialog(
